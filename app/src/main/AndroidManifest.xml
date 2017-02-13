@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".Play" />
         <activity android:name=".Scores" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".Credits"></activity>
     </application>
 
 </manifest>
