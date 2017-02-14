@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,19 +16,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public boolean onCreateOptionsMenu(Menu menu)
+    public boolean onCreateOptionsMenu(Menu menu) //Enlazar el menu
     {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
-    public boolean onOptionsItemSelected(MenuItem item)
-    {    switch (item.getItemId()) {
-        case R.id.activity_credits:
+    public boolean onOptionsItemSelected(MenuItem item) //Los iconos del menu que acciones hacen
+    {
             Intent intent = new Intent(this, Credits.class);
-            startActivity(intent);
-            break;
-    }
-        return true;
+             startActivity(intent);
+            return true;
     }
     public void botones (View v) //Programa para los botones
     {
