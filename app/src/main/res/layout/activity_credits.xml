@@ -10,4 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="sdm.labs.sevilpon.millonario.Credits">
 
+    <TextView
+        android:text="Hola a todo el mundo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="82dp"
+        android:layout_marginStart="82dp"
+        android:id="@+id/textView2" />
 </RelativeLayout>
