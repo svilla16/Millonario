@@ -12,9 +12,4 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
     }
-    public boolean onCreateOptionsMenu(Menu menu) //Enlazar el menu
-    {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
 }
