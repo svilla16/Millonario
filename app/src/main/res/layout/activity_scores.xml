@@ -11,9 +11,11 @@
     tools:context="sdm.labs.sevilpon.millonario.Scores">
 
     <TabHost
+        android:id="@+id/tabHost"
         android:layout_width="match_parent"
         android:layout_height="300dip"
-        style="@style/Widget.AppCompat.ActionBar.TabBar">
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +25,7 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="41dp" />
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -36,6 +38,11 @@
                     android:layout_height="433dp"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="This is tab 1" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -44,13 +51,10 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="This is tab 2" />
 
                 </LinearLayout>
             </FrameLayout>

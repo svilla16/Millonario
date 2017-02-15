@@ -12,11 +12,26 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 public class Scores extends AppCompatActivity {
-
+    TabHost tabHost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scores);
+        TabHost host = (TabHost)findViewById(R.id.tabHost);
+        host.setup();
+
+        //Tab 1
+        TabHost.TabSpec spec = host.newTabSpec("Local");
+        spec.setContent(R.id.tab1);
+        spec.setIndicator("Local");
+        host.addTab(spec);
+
+        //Tab 2
+        spec = host.newTabSpec("Friends");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("Friends");
+        host.addTab(spec);
+
     }
     public boolean onCreateOptionsMenu(Menu menu) //Enlazar el menu
     {
