@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Millonario</string>
+    <string-array name="fi">
+        <item>A</item>
+        <item>Almak</item>
+        <item>Anlamak</item>
+        <item>Anlasmak</item>
+        <item>Anlatmak</item>
+        <item>Ayrilmak</item>
+    </string-array>
 </resources>

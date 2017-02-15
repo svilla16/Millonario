@@ -1,11 +1,14 @@
 package sdm.labs.sevilpon.millonario;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 public class Scores extends AppCompatActivity {
@@ -24,8 +27,7 @@ public class Scores extends AppCompatActivity {
     {
         if(item.getItemId() == android.R.id.home)
         {return super.onOptionsItemSelected(item);}
-        TextView editText = (TextView)findViewById(R.id.textView);
-        editText.setText(null);
         return true;
     }
+
 }
