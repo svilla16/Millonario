@@ -22,8 +22,10 @@
         android:layout_weight="0.26"
         android:background="?android:attr/selectableItemBackground"
         android:textColor="@android:color/black"
-        android:drawableLeft="@android:drawable/btn_star_big_off"
-        android:onClick="botones" />
+        android:drawableLeft="@mipmap/play2"
+        android:onClick="botones"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="Scores"
@@ -33,17 +35,21 @@
         android:layout_weight="0.27"
         android:background="?android:attr/selectableItemBackground"
         android:textColor="@android:color/background_dark"
-        android:drawableLeft="@android:drawable/btn_star_big_off"
-        android:onClick="botones" />
+        android:drawableLeft="@mipmap/score"
+        android:onClick="botones"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="Settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Settings"
-        android:layout_weight="0.26"
+        android:layout_weight="0.33"
         android:background="?android:attr/selectableItemBackground"
         android:textColor="@android:color/background_dark"
-        android:drawableLeft="@android:drawable/btn_star_big_off"
-        android:onClick="botones" />
+        android:drawableLeft="@mipmap/settings2"
+        android:onClick="botones"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
 </LinearLayout>

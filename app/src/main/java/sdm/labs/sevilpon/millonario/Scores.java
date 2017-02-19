@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -17,6 +18,7 @@ public class Scores extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scores);
+
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
 
@@ -38,10 +40,22 @@ public class Scores extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menuscore, menu);
         return true;
     }
-    public boolean onOptionsItemSelected(MenuItem item) //Los iconos del menu que acciones hacen
+    public boolean onOptionsItemSelected(MenuItem item, View v) //Los iconos del menu que acciones hacen
     {
         if(item.getItemId() == android.R.id.home)
         {return super.onOptionsItemSelected(item);}
+        else {
+            switch (v.getId()) {
+                case R.id.tab1:
+                    TextView texts = (TextView) findViewById(R.id.tet);
+                    texts.setText(null);
+                    break;
+                case R.id.tab2:
+                    TextView texts2 = (TextView) findViewById(R.id.tet);
+                    texts2.setText(null);
+                    break;
+            }
+        }
         return true;
     }
 
