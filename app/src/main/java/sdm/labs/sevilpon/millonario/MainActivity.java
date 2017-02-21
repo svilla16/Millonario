@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    //En los sistemas Windows que MAC los crea por defecto
+    //en build.grade quitar compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5' y compile 'com.android.support:design:25.1.1'
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
