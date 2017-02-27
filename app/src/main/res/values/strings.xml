@@ -8,4 +8,16 @@
         <item>Anlatmak</item>
         <item>Ayrilmak</item>
     </string-array>
+
+    <string name="l_jugando"><b>Jugando por:</b></string>
+    <string name="lv_dinero"><b>0$</b></string>
+    <string name="l_pregunta"><b>Pregunta:</b></string>
+    <string name="lv_numPregunta"><b>1</b></string>
+
+    <string name="lv_pregunta"><b>¿?</b></string>
+
+    <string name="lv_resp1"><b>1</b></string>
+    <string name="lv_resp2"><b>1</b></string>
+    <string name="lv_resp3"><b>1</b></string>
+    <string name="lv_resp4"><b>1</b></string>
 </resources>
