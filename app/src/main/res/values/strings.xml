@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">Millonario</string>
-    <string-array name="fi">
-        <item>A</item>
-        <item>Almak</item>
-        <item>Anlamak</item>
-        <item>Anlasmak</item>
-        <item>Anlatmak</item>
-        <item>Ayrilmak</item>
+    <string-array name="localn">
+        <item>Adrian</item>
+        <item>Juan Carlos</item>
+        <item>Ismael</item>
+        <item>Sebastian</item>
+        <item>Andrea</item>
+        <item>Noelia</item>
+    </string-array>
+    <string-array name="localp">
+        <item>5000</item>
+        <item>400</item>
+        <item>1500</item>
+        <item>200000</item>
+        <item>250000</item>
+        <item>1000000</item>
     </string-array>
 </resources>

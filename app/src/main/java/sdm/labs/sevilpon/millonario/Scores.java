@@ -7,13 +7,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Scores extends AppCompatActivity {
     TabHost tabHost;
+    String[] local;
+    String[] locals;
+    List<String> list = new ArrayList<String>();
+    ArrayAdapter adapter;
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +42,17 @@ public class Scores extends AppCompatActivity {
         spec.setContent(R.id.tab2);
         spec.setIndicator("Friends");
         host.addTab(spec);
+        //nombres local
+        listView = (ListView) findViewById(R.id.localn);
+        local = getResources().getStringArray(R.array.localn);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, local);
+        listView.setAdapter(adapter);
+        //puntuaciones local
+        ListView listViews = (ListView) findViewById(R.id.localp);
+        locals = getResources().getStringArray(R.array.localp);
+        ArrayAdapter<String> adapters = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, locals);
+        listViews.setAdapter(adapters);
+
 
     }
     public boolean onCreateOptionsMenu(Menu menu) //Enlazar el menu
@@ -40,22 +60,15 @@ public class Scores extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menuscore, menu);
         return true;
     }
-    public boolean onOptionsItemSelected(MenuItem item, View v) //Los iconos del menu que acciones hacen
+    public boolean onOptionsItemSelected(MenuItem item) //Los iconos del menu que acciones hacen
     {
         if(item.getItemId() == android.R.id.home)
         {return super.onOptionsItemSelected(item);}
-        else {
-            switch (v.getId()) {
-                case R.id.tab1:
-                    TextView texts = (TextView) findViewById(R.id.tet);
-                    texts.setText(null);
-                    break;
-                case R.id.tab2:
-                    TextView texts2 = (TextView) findViewById(R.id.tet);
-                    texts2.setText(null);
-                    break;
-            }
-        }
+        list.clear();
+        adapter.notifyDataSetChanged();
+        //TextView texts = (TextView) findViewById(R.id.tet);
+        //texts.setText(null);
+
         return true;
     }
 
