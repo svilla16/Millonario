@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -20,9 +21,9 @@ public class Scores extends AppCompatActivity {
     TabHost tabHost;
     String[] local;
     String[] locals;
-    List<String> list = new ArrayList<String>();
     ArrayAdapter adapter;
     ListView listView;
+    LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +32,13 @@ public class Scores extends AppCompatActivity {
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
 
-        //Tab 1
+        //Tab 1 - Local
         TabHost.TabSpec spec = host.newTabSpec("Local");
         spec.setContent(R.id.tab1);
         spec.setIndicator("Local");
         host.addTab(spec);
 
-        //Tab 2
+        //Tab 2 - Friends
         spec = host.newTabSpec("Friends");
         spec.setContent(R.id.tab2);
         spec.setIndicator("Friends");
@@ -64,10 +65,8 @@ public class Scores extends AppCompatActivity {
     {
         if(item.getItemId() == android.R.id.home)
         {return super.onOptionsItemSelected(item);}
-        list.clear();
-        adapter.notifyDataSetChanged();
-        //TextView texts = (TextView) findViewById(R.id.tet);
-        //texts.setText(null);
+        linearLayout=(LinearLayout) findViewById(R.id.tab1);
+        linearLayout.removeAllViews();
 
         return true;
     }
