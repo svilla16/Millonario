@@ -43,13 +43,15 @@
                         android:layout_height="match_parent"
                         android:id="@+id/localn"
                         android:headerDividersEnabled="false"
-                        style="@style/Widget.AppCompat.ListView" />
+                        style="@style/Widget.AppCompat.ListView"
+                        android:textAlignment="center"/>
 
                     <ListView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/localp"
-                        android:headerDividersEnabled="false" />
+                        android:headerDividersEnabled="false"
+                        android:textAlignment="center"/>
                 </LinearLayout>
 
                 <LinearLayout
