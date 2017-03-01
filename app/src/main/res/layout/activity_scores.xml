@@ -43,13 +43,18 @@
                         style="@style/Widget.AppCompat.ListView"
                         android:layout_width="178dp"
                         android:layout_height="match_parent"
-                        android:headerDividersEnabled="false" />
+                        android:cacheColorHint="@android:color/background_light"
+                        android:visibility="visible"
+                        android:headerDividersEnabled="true"
+                        android:textAlignment="gravity"
+                        />
 
                     <ListView
                         android:id="@+id/localp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:headerDividersEnabled="false" />
+                        android:textAlignment="gravity"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -62,7 +67,8 @@
                         android:id="@+id/tet2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="This is tab 2" />
+                        android:text="This is tab 2"
+                        />
 
                 </LinearLayout>
             </FrameLayout>
