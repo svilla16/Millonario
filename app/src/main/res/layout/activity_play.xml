@@ -23,38 +23,82 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="@string/l_jugando"
+                android:text="@string/l_playing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView19" />
+                android:id="@+id/l_playing" />
 
             <TextView
-                android:text="@string/lv_dinero"
+                android:text="@string/lv_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView18" />
+                android:id="@+id/lv_money" />
 
             <TextView
-                android:text="@string/l_pregunta"
+                android:text="@string/l_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView16"
+                android:id="@+id/l_question"
                 />
 
             <TextView
-                android:text="@string/lv_numPregunta"
+                android:text="@string/lv_questionNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView17" />
+                android:id="@+id/lv_questionNumber" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/lv_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_QuestionGame"
+                android:fontFamily="sans-serif"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="4">
+
+                <Button
+                    android:text="@string/lv_resp1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button1" />
+
+                <Button
+                    android:text="@string/lv_resp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button2" />
+
+                <Button
+                    android:text="@string/lv_resp3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button3" />
+
+                <Button
+                    android:text="@string/lv_resp4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button4" />
+            </LinearLayout>
+
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
