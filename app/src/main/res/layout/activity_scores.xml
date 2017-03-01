@@ -46,14 +46,12 @@
                         android:cacheColorHint="@android:color/background_light"
                         android:visibility="visible"
                         android:headerDividersEnabled="true"
-                        android:textAlignment="gravity"
                         />
 
                     <ListView
                         android:id="@+id/localp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAlignment="gravity"
                         />
                 </LinearLayout>
 
