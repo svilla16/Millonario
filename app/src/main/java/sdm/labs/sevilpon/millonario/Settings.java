@@ -14,8 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import static sdm.labs.sevilpon.millonario.R.id.ayudas;
-
-public class Settings extends AppCompatActivity {
+//Si cambias el AppCompatPreferenceActivity por AppCompatActivity funciona el activity_settings
+public class Settings extends AppCompatPreferenceActivity {
     private EditText names;
     private EditText textos;
     Spinner numero;
@@ -23,6 +23,9 @@ public class Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Quitar esta linea para que funcione el activity_settings
+        addPreferencesFromResource(R.xml.preferences);
+
         setContentView(R.layout.activity_settings);
         Spinner spinners = (Spinner)findViewById(ayudas);
         ArrayAdapter<String> spinnersad= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.ayuda));
