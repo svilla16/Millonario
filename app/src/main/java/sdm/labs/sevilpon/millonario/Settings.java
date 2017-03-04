@@ -18,21 +18,21 @@ import static sdm.labs.sevilpon.millonario.R.id.ayudas;
 public class Settings extends AppCompatActivity {
     private EditText names;
     private EditText textos;
-    Spinner gender;
+    Spinner numero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        Spinner spinnerCountShoes = (Spinner)findViewById(ayudas);
-        ArrayAdapter<String> spinnerCountShoesArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.ayuda));
-        spinnerCountShoes.setAdapter(spinnerCountShoesArrayAdapter);
+        Spinner spinners = (Spinner)findViewById(ayudas);
+        ArrayAdapter<String> spinnersad= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.ayuda));
+        spinners.setAdapter(spinnersad);
         //Nombre
         names=(EditText)findViewById(R.id.name);
         //Amigo
         textos=(EditText)findViewById(R.id.texto);
         //Número de Ayudas
-        gender=(Spinner)findViewById(R.id.ayudas);
+        numero=(Spinner)findViewById(R.id.ayudas);
 
 
 
@@ -41,10 +41,10 @@ public class Settings extends AppCompatActivity {
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        String gen=gender.getSelectedItem().toString();
+        String num=numero.getSelectedItem().toString();
         editor.putString("nombre" , names.getText().toString());
         editor.putString("amigo" , textos.getText().toString());
-        editor.putString("ayuda", gen);
+        editor.putString("ayuda", num);
         editor.apply();
         super.onPause();
     }
@@ -54,9 +54,9 @@ public class Settings extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         names.setText(prefs.getString("nombre" , ""));
         textos.setText(prefs.getString("amigo" , ""));
-        String gen=prefs.getString("ayuda", "");
-        TextView optiondisp = (TextView) findViewById(R.id.prueba);
-        optiondisp.setText("Ayudas Nº:"+gen+"\n");
+        String num=prefs.getString("ayuda", "");
+        TextView guardado = (TextView) findViewById(R.id.prueba);
+        guardado.setText("Ayudas Nº:"+num+"\n");
 
 
         super.onResume();
