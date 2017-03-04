@@ -18,7 +18,7 @@ import static sdm.labs.sevilpon.millonario.R.id.ayudas;
 public class Settings extends AppCompatActivity {
     private EditText names;
     private EditText textos;
-    private int ayudass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,16 +28,15 @@ public class Settings extends AppCompatActivity {
         spinnerCountShoes.setAdapter(spinnerCountShoesArrayAdapter);
         names=(EditText)findViewById(R.id.name);
         textos=(EditText)findViewById(R.id.texto);
-        ayudass = ((Spinner)findViewById(R.id.ayudas)).getSelectedItemPosition();
+
 
     }
     protected void onPause() {
-        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("nombre" , names.getText().toString());
         editor.putString("amigo" , textos.getText().toString());
-        editor.putInt("ayudas" , ayudass);
+
         editor.apply();
         super.onPause();
     }
@@ -46,7 +45,8 @@ public class Settings extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         names.setText(prefs.getString("nombre" , ""));
         textos.setText(prefs.getString("amigo" , ""));
-        ayudass = prefs.getInt("ayuda", 2);
+
+
 
         super.onResume();
     }
