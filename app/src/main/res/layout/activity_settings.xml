@@ -22,7 +22,7 @@
             android:text="Nombre:"
             android:layout_width="65dp"
             android:layout_height="match_parent"
-            android:id="@+id/textView"
+            android:id="@+id/nombre"
             android:textStyle="normal|bold"
             android:textSize="14sp" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/name"
             android:hint="Name" />
     </LinearLayout>
     <LinearLayout
@@ -43,7 +43,7 @@
             android:text="¿Cuántas veces puedes pedir ayuda?"
             android:layout_width="209dp"
             android:layout_height="79dp"
-            android:id="@+id/textView7"
+            android:id="@+id/pregunta"
             android:textStyle="normal|bold"
             android:textSize="14sp"
             android:textAlignment="textStart" />
@@ -51,7 +51,7 @@
         <Spinner
             android:layout_width="160dp"
             android:layout_height="match_parent"
-            android:id="@+id/spinner" />
+            android:id="@+id/ayudas" />
 
     </LinearLayout>
     <LinearLayout
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/texto"
             android:layout_weight="1"
             android:hint="Pon el nombre de tus amigos" />
     </LinearLayout>
