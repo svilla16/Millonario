@@ -27,15 +27,18 @@ public class Settings extends AppCompatActivity {
         Spinner spinnerCountShoes = (Spinner)findViewById(ayudas);
         ArrayAdapter<String> spinnerCountShoesArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.ayuda));
         spinnerCountShoes.setAdapter(spinnerCountShoesArrayAdapter);
+        //Nombre
         names=(EditText)findViewById(R.id.name);
+        //Amigo
         textos=(EditText)findViewById(R.id.texto);
-
+        //Número de Ayudas
         gender=(Spinner)findViewById(R.id.ayudas);
-        //gender.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
 
 
     }
     protected void onPause()  {
+        //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
         String gen=gender.getSelectedItem().toString();
@@ -47,12 +50,13 @@ public class Settings extends AppCompatActivity {
     }
 
     protected void onResume() {
+        //Saca los datos guardados por Pantalla
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         names.setText(prefs.getString("nombre" , ""));
         textos.setText(prefs.getString("amigo" , ""));
-        String gen=prefs.getString("gender", "");
-        TextView optiondisp = (TextView) findViewById(R.id.texto);
-        optiondisp.setText("Gender:"+gen+"\n");
+        String gen=prefs.getString("ayuda", "");
+        TextView optiondisp = (TextView) findViewById(R.id.prueba);
+        optiondisp.setText("Ayudas Nº:"+gen+"\n");
 
 
         super.onResume();

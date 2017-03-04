@@ -58,7 +58,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="68dp">
 
         <Button
             android:text="Añadir Amigos"
@@ -66,12 +66,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/button2" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:layout_weight="1" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/texto"
+            android:hint="Pon el nombre de tus amigos" />
 
     </LinearLayout>
 
@@ -80,13 +81,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
+        <TextView
+            android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/texto"
-            android:hint="Pon el nombre de tus amigos"
-            android:text="textos" />
+            android:layout_height="47dp"
+            android:id="@+id/prueba"
+            android:layout_weight="1" />
     </LinearLayout>
 </LinearLayout>
