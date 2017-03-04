@@ -18,6 +18,7 @@ import static sdm.labs.sevilpon.millonario.R.id.ayudas;
 public class Settings extends AppCompatActivity {
     private EditText names;
     private EditText textos;
+    Spinner gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +30,18 @@ public class Settings extends AppCompatActivity {
         names=(EditText)findViewById(R.id.name);
         textos=(EditText)findViewById(R.id.texto);
 
+        gender=(Spinner)findViewById(R.id.ayudas);
+        //gender.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
 
     }
-    protected void onPause() {
+    protected void onPause()  {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
+        String gen=gender.getSelectedItem().toString();
         editor.putString("nombre" , names.getText().toString());
         editor.putString("amigo" , textos.getText().toString());
-
+        editor.putString("ayuda", gen);
         editor.apply();
         super.onPause();
     }
@@ -45,7 +50,9 @@ public class Settings extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         names.setText(prefs.getString("nombre" , ""));
         textos.setText(prefs.getString("amigo" , ""));
-
+        String gen=prefs.getString("gender", "");
+        TextView optiondisp = (TextView) findViewById(R.id.texto);
+        optiondisp.setText("Gender:"+gen+"\n");
 
 
         super.onResume();
