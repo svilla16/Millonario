@@ -18,6 +18,7 @@ import static sdm.labs.sevilpon.millonario.R.id.ayudas;
 public class Settings extends AppCompatActivity {
     private EditText names;
     private EditText textos;
+    private  String num;
     Spinner numero;
 
     @Override
@@ -57,7 +58,7 @@ public class Settings extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         names.setText(prefs.getString("nombre" , ""));
         textos.setText(prefs.getString("amigo" , ""));
-        String num=prefs.getString("ayuda", "");
+        num=prefs.getString("ayuda", "");
         TextView guardado = (TextView) findViewById(R.id.prueba);
         guardado.setText("Nº de Ayudas:"+num+"\n");
 
