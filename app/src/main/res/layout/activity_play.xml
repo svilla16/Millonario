@@ -19,41 +19,48 @@
         android:stretchColumns="*">
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-            <TextView
-                android:text="@string/l_playing"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_column="0"
-                android:id="@+id/l_playing" />
+                android:orientation="horizontal" >
+                <TextView
+                    android:text="@string/l_playing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_column="0"
+                    android:id="@+id/l_playing" />
 
-            <TextView
-                android:text="@string/lv_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_column="1"
-                android:id="@+id/lv_money" />
+                <TextView
+                    android:text="@string/lv_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:id="@+id/lv_money" />
 
-            <TextView
-                android:text="@string/l_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_column="2"
-                android:id="@+id/l_question"
-                />
+                <TextView
+                    android:text="@string/l_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_column="2"
+                    android:id="@+id/l_question"
+                    />
 
-            <TextView
-                android:text="@string/lv_questionNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_column="3"
-                android:id="@+id/lv_questionNumber" />
+                <TextView
+                    android:text="@string/lv_questionNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_column="3"
+                    android:id="@+id/lv_questionNumber" />
+            </LinearLayout>
+
+
 
         </TableRow>
 

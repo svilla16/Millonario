@@ -189,6 +189,7 @@ public class Play extends AppCompatActivity {
 
     private void  accionesBotones(int idBoton){
         Question preguntaActual = arrayQuestions.get(pregActual);
+        Log.d("ID BOTON: ", String.valueOf(idBoton));
     }
 
 
