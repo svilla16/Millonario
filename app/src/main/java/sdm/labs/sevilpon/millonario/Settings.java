@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import static sdm.labs.sevilpon.millonario.R.id.ayudas;
 //Si cambias el AppCompatPreferenceActivity por AppCompatActivity funciona el activity_settings
-public class Settings extends AppCompatPreferenceActivity {
+public class Settings extends AppCompatActivity {
     private EditText names;
     private EditText textos;
     Spinner numero;
@@ -24,7 +24,7 @@ public class Settings extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Quitar esta linea para que funcione el activity_settings
-        addPreferencesFromResource(R.xml.preferences);
+        //addPreferencesFromResource(R.xml.preferences);
 
         setContentView(R.layout.activity_settings);
         Spinner spinners = (Spinner)findViewById(ayudas);
@@ -59,8 +59,7 @@ public class Settings extends AppCompatPreferenceActivity {
         textos.setText(prefs.getString("amigo" , ""));
         String num=prefs.getString("ayuda", "");
         TextView guardado = (TextView) findViewById(R.id.prueba);
-        guardado.setText("Ayudas Nº:"+num+"\n");
-
+        guardado.setText("Nº de Ayudas:"+num+"\n");
 
         super.onResume();
     }

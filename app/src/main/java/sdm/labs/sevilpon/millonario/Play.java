@@ -1,9 +1,12 @@
 package sdm.labs.sevilpon.millonario;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -40,5 +43,14 @@ public class Play extends AppCompatActivity {
         boton2.setText(arrayQuestions.get(0).answer2);
         boton3.setText(arrayQuestions.get(0).answer3);
         boton4.setText(arrayQuestions.get(0).answer4);
+
+        //Recuperar los datos guardados temporalmente del settings
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        EditText names=(EditText)findViewById(R.id.name);
+        String namess = prefs.getString("nombre", "");
+        String amigos = prefs.getString("amigo", "");
+        String num=prefs.getString("ayuda", "");
+        TextView guardado = (TextView) findViewById(R.id.prueba2);
+        guardado.setText("Jugador: "+namess+"\n"+"Amigo: "+amigos+"\n"+"Nº de Ayudas: "+num+"\n");
     }
 }
