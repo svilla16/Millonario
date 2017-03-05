@@ -10,10 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import static sdm.labs.sevilpon.millonario.R.id.ayudas;
+import static sdm.labs.sevilpon.millonario.R.id.tab1;
+
 //Si cambias el AppCompatPreferenceActivity por AppCompatActivity funciona el activity_settings
 public class Settings extends AppCompatActivity {
     private EditText names;
@@ -40,12 +43,13 @@ public class Settings extends AppCompatActivity {
 
 
 
+
     }
     protected void onPause()  {
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        String num=numero.getSelectedItem().toString();
+        num= numero.getSelectedItem().toString();
         editor.putString("nombre" , names.getText().toString());
         editor.putString("amigo" , textos.getText().toString());
         editor.putString("ayuda", num);

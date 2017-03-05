@@ -49,7 +49,7 @@
             android:textAlignment="textStart" />
 
         <Spinner
-            android:layout_width="160dp"
+            android:layout_width="144dp"
             android:layout_height="match_parent"
             android:id="@+id/ayudas" />
 
