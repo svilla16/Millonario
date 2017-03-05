@@ -1,6 +1,7 @@
 package sdm.labs.sevilpon.millonario;
 
 import android.content.res.XmlResourceParser;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,12 +20,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Play extends AppCompatActivity {
+public class Play extends AppCompatActivity implements View.OnClickListener{
     //Array global que contendra todas las preguntas y sus datos
     ArrayList<Question> arrayQuestions = new ArrayList<>(15);
-    ArrayList<String> arrayMoney = new ArrayList<>(15);
+    ArrayList<Integer> arrayMoney = new ArrayList<>(15);
 
-    //Pregunta actual
+    //Variables del DOM que recibiran valor al crearse
+    Button boton1;
+    Button boton2;
+    Button boton3;
+    Button boton4;
+
+    TextView pregunta;
+    TextView dineroActual;
+    TextView numPregActual;
+
+    //Pregunta actual (Variable interna para llevar control del objeto Question a usar)
     int pregActual = 0;
 
     // Constants XML Tags
@@ -58,20 +69,19 @@ public class Play extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
         //Asignacion de los elementos del DOM
-        Button boton1 = (Button) findViewById(R.id.button1);
-        Button boton2 = (Button) findViewById(R.id.button2);
-        Button boton3 = (Button) findViewById(R.id.button3);
-        Button boton4 = (Button) findViewById(R.id.button4);
-        TextView pregunta = (TextView) findViewById(R.id.lv_QuestionGame);
+        boton1 = (Button) findViewById(R.id.button1);
+        boton2 = (Button) findViewById(R.id.button2);
+        boton3 = (Button) findViewById(R.id.button3);
+        boton4 = (Button) findViewById(R.id.button4);
+        pregunta = (TextView) findViewById(R.id.lv_QuestionGame);
 
-        TextView dineroActual = (TextView) findViewById(R.id.lv_money);
-        TextView numPregActual = (TextView) findViewById(R.id.lv_questionNumber);
-        /*numPregActual.setText(pregActual);*/
+        dineroActual = (TextView) findViewById(R.id.lv_money);
+        numPregActual = (TextView) findViewById(R.id.lv_questionNumber);
 
         /*si no existe el archivo se termina ejecucion*/
         XmlResourceParser parser = getResources().getXml(R.xml.questions);
@@ -84,17 +94,52 @@ public class Play extends AppCompatActivity {
                 Log.d("Contenido array " + i, arrayQuestions.get(i).text);
             }*/
 
-            pregunta.setText(arrayQuestions.get(pregActual).getText());
+            arrayMoney.add(0);
+            arrayMoney.add(100);
+            arrayMoney.add(200);
+            arrayMoney.add(300);
+            arrayMoney.add(500);
+            arrayMoney.add(1000);
+            arrayMoney.add(2000);
+            arrayMoney.add(4000);
+            arrayMoney.add(8000);
+            arrayMoney.add(16000);
+            arrayMoney.add(32000);
+            arrayMoney.add(64000);
+            arrayMoney.add(125000);
+            arrayMoney.add(250000);
+            arrayMoney.add(500000);
+            arrayMoney.add(1000000);
 
-            boton1.setText(arrayQuestions.get(pregActual).getAnswer1());
-            boton2.setText(arrayQuestions.get(pregActual).getAnswer2());
-            boton3.setText(arrayQuestions.get(pregActual).getAnswer3());
-            boton4.setText(arrayQuestions.get(pregActual).getAnswer4());
+            siguientePregunta();
+
+
 
             boton1.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    accionesBotones(v.getId());
+                    accionesBotones(v);
+                }
+            });
+
+            boton2.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    accionesBotones(v);
+                }
+            });
+
+            boton3.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    accionesBotones(v);
+                }
+            });
+
+            boton4.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    accionesBotones(v);
                 }
             });
 
@@ -187,9 +232,92 @@ public class Play extends AppCompatActivity {
 
     }
 
-    private void  accionesBotones(int idBoton){
+    public void  accionesBotones(View v){
         Question preguntaActual = arrayQuestions.get(pregActual);
-        Log.d("ID BOTON: ", String.valueOf(idBoton));
+        String right = preguntaActual.getRight();
+        Button b_respuesta = (Button) v;
+
+        Log.d("ID V: ", String.valueOf(v.getId()));
+        Log.d("ID Boton 1: ", String.valueOf(R.id.button1));
+
+        switch (v.getId()){
+            case (R.id.button1):
+                if(right.equals("1")){
+                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_LONG).show();
+                }else{
+                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                }
+                break;
+            case (R.id.button2):
+                if(right.equals("2")){
+                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
+                    pregActual++;
+                    b_respuesta.setBackgroundResource(android.R.drawable.btn_default);
+                    siguientePregunta();
+                }else{
+                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                }
+                break;
+            case (R.id.button3):
+                if(right.equals("3")){
+                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_LONG).show();
+                }else{
+                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                }
+                break;
+            case (R.id.button4):
+                if(right.equals("4")){
+                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_LONG).show();
+                }else{
+                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+
+        /*String right = arrayQuestions.get(pregActual).getRight();
+        Button b_respuesta = (Button) v;
+        String respuesta = b_respuesta.getText().toString();
+        if(respuesta.equals(right)){
+            b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+            try {
+                wait(1000);
+            }catch (Exception e){e.printStackTrace();}
+
+            //Se volvera al menu inicial
+            Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_LONG).show();
+            pregActual++;
+            siguientePregunta();
+
+        }else{
+            b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+            Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+            pregActual = 0;
+        }*/
+    }
+
+    private void siguientePregunta(){
+        pregunta.setText(arrayQuestions.get(pregActual).getText());
+
+        boton1.setText(arrayQuestions.get(pregActual).getAnswer1());
+        boton2.setText(arrayQuestions.get(pregActual).getAnswer2());
+        boton3.setText(arrayQuestions.get(pregActual).getAnswer3());
+        boton4.setText(arrayQuestions.get(pregActual).getAnswer4());
+
+       /* dineroActual.setText(arrayMoney.get(pregActual));*/
+       /* numPregActual.setText(pregActual);*/
+    }
+
+    @Override
+    public void onClick(View v){
+
     }
 
 

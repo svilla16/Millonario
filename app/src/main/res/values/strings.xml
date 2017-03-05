@@ -35,4 +35,7 @@
     <string name="lv_resp3"><b>3</b></string>
     <string name="lv_resp4"><b>4</b></string>
     <string name="error_questions_charge">No se han podido cargar las preguntas del juego</string>
+
+    <string name="l_answerCorrect">Respuesta correcta! Continuamos jugando</string>
+    <string name="l_answerInCorrect">Respuesta Incorrecta! Bueno, concursante esto parece todo por hoy</string>
 </resources>
