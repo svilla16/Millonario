@@ -3,7 +3,7 @@ package sdm.labs.sevilpon.millonario;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Xml;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,14 +14,18 @@ import android.widget.Toast;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Play extends AppCompatActivity {
+    //Array global que contendra todas las preguntas y sus datos
     ArrayList<Question> arrayQuestions = new ArrayList<>(15);
+    ArrayList<String> arrayMoney = new ArrayList<>(15);
+
+    //Pregunta actual
+    int pregActual = 0;
 
     // Constants XML Tags
     //Etiqueta TAG
@@ -57,11 +61,17 @@ public class Play extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+
+        //Asignacion de los elementos del DOM
         Button boton1 = (Button) findViewById(R.id.button1);
         Button boton2 = (Button) findViewById(R.id.button2);
         Button boton3 = (Button) findViewById(R.id.button3);
         Button boton4 = (Button) findViewById(R.id.button4);
         TextView pregunta = (TextView) findViewById(R.id.lv_QuestionGame);
+
+        TextView dineroActual = (TextView) findViewById(R.id.lv_money);
+        TextView numPregActual = (TextView) findViewById(R.id.lv_questionNumber);
+        /*numPregActual.setText(pregActual);*/
 
         /*si no existe el archivo se termina ejecucion*/
         XmlResourceParser parser = getResources().getXml(R.xml.questions);
@@ -69,9 +79,25 @@ public class Play extends AppCompatActivity {
             //Se volvera al menu inicial
             Toast.makeText(Play.this, R.string.error_questions_charge, Toast.LENGTH_LONG).show();
         }else{
-            /*arrayQuestions =  */readXmlFile(parser);
-            System.out.println("Lista obtenida" + arrayQuestions);
-            /*pregunta.setText(arrayQuestions.get(0).getText());*/
+            arrayQuestions =  readXmlFile(parser);
+            /*for (int i= 0; i < arrayQuestions.size(); i++) {
+                Log.d("Contenido array " + i, arrayQuestions.get(i).text);
+            }*/
+
+            pregunta.setText(arrayQuestions.get(pregActual).getText());
+
+            boton1.setText(arrayQuestions.get(pregActual).getAnswer1());
+            boton2.setText(arrayQuestions.get(pregActual).getAnswer2());
+            boton3.setText(arrayQuestions.get(pregActual).getAnswer3());
+            boton4.setText(arrayQuestions.get(pregActual).getAnswer4());
+
+            boton1.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    accionesBotones(v.getId());
+                }
+            });
+
         }
 
     }
@@ -79,17 +105,14 @@ public class Play extends AppCompatActivity {
     /*
         Reads the contents of the XML file and displays in the screen
     */
-    private void readXmlFile(XmlResourceParser parser) {
+    private ArrayList<Question> readXmlFile(XmlResourceParser parser) {
         //ArrayList a devolver
         ArrayList<Question> listapreguntas = new ArrayList(15);
-        System.out.print("Listapreguntas: " + listapreguntas);
 
         // Hold references to View
         TextView tv;
         EditText et = null;
 
-        /*XmlPullParser parser = Xml.newPullParser();*/
-        InputStreamReader reader = null;
         int event;
 
         //Creacion de las variables que crearan el objeto
@@ -106,11 +129,6 @@ public class Play extends AppCompatActivity {
         String fifty2 = "";
 
         try {
-
-            // Get a reader to the file in the application internal storage
-            reader = new InputStreamReader(openFileInput("questions"));
-            // Associate this reader to the XmlPullParser
-            parser.setInput(reader);
 
             // Keep reading from the XML file until an End of Document tag is reached
             while ((event = parser.next()) != XmlPullParser.END_DOCUMENT) {
@@ -144,6 +162,7 @@ public class Play extends AppCompatActivity {
 
                             //Añadimos objeto al array
                             listapreguntas.add(question);
+                            /*Log.d("PREGUNTA: " , question.text.toString());*/
                         }
                         break;
 
@@ -162,17 +181,14 @@ public class Play extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            // Ensure that the Reader is closed (if opened)
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            return listapreguntas;
         }
 
-        /*return listapreguntas;*/
+
+    }
+
+    private void  accionesBotones(int idBoton){
+        Question preguntaActual = arrayQuestions.get(pregActual);
     }
 
 
