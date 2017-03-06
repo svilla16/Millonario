@@ -46,6 +46,7 @@ public class BaaedDates extends SQLiteOpenHelper {
     public ArrayList<datos> lista()
     { ArrayList<datos> resultado = new ArrayList<datos>();
         datos item;
+        datos listas;
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.query("puntuaciones", new String[]{"name", "score"}, null, null, null, null, null);
         while (cursor.moveToNext()) {
@@ -56,6 +57,10 @@ public class BaaedDates extends SQLiteOpenHelper {
         }
         cursor.close();
         database.close();
+        for(int i =0; i< resultado.size(); i++)
+        {
+             listas = resultado.get(i);
+        }
         return resultado;
     }
 

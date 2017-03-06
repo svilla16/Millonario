@@ -21,7 +21,9 @@ import static sdm.labs.sevilpon.millonario.R.id.tab1;
 public class Settings extends AppCompatActivity {
     private EditText names;
     private EditText textos;
-    public String num, namess;
+    public int num;
+    public String namess;
+    public String amigos;
     public int punt;
     private TextView guardado;
     Spinner numero;
@@ -52,10 +54,10 @@ public class Settings extends AppCompatActivity {
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        num= numero.getSelectedItem().toString();
+        num= numero.getSelectedItemPosition();
         editor.putString("nombre" , names.getText().toString());
         editor.putString("amigo" , textos.getText().toString());
-        editor.putString("ayuda", num);
+        editor.putInt("ayuda", num);
         editor.putInt("puntuacion", 1000);
         editor.apply();
         super.onPause();
@@ -66,8 +68,9 @@ public class Settings extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         names.setText(prefs.getString("nombre" , ""));
         textos.setText(prefs.getString("amigo" , ""));
-        num=prefs.getString("ayuda", "");
-        //namess = prefs.getString("nombre", "");
+        num=prefs.getInt("ayuda",0);
+        numero.setSelection(num);
+        amigos = prefs.getString("amigo", "");
         namess = prefs.getString("nombre", "");
         punt = prefs.getInt("puntuacion",0);
         Load(namess,punt);
@@ -76,7 +79,8 @@ public class Settings extends AppCompatActivity {
 
     public void Load(String namess, int punt)
     {   guardado = (TextView) findViewById(R.id.prueba);
-        guardado.setText("Nº de Ayudas:"+namess+"\n"+"Puntuacion:"+punt+"\n");
+        guardado.setText("Jugador:"+namess+"\n"+"Nº de Ayudas:"+num+"\n"+"Puntuacion:"+punt+"\n"
+        +"Amigo:"+amigos+"\n");
         sqllite = new BaaedDates(getApplicationContext());
         sqllite.addpuntuaciones(namess,punt);
     }

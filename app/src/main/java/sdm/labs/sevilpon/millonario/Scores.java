@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -54,10 +55,24 @@ public class Scores extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.localn);
         listageneral  = new ArrayList<datos>();
         listageneral.addAll(BaaedDates.getInstance(this).lista());
+
         //local = getResources().getStringArray(R.array.localn);
         //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, local);
         //local = getResources().getStringArray(values);
-        adapter = new ArrayAdapter<>(this,android.R.layout.simple_expandable_list_item_1, listageneral);
+
+         adapter =new ArrayAdapter (this, android.R.layout.simple_list_item_2, android.R.id.text1, listageneral)
+        {
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+                text1.setText(listageneral.get(position).getnombres());
+                text2.setText(String.valueOf(listageneral.get(position).getpuntuacions()));
+                return view;
+            }
+        };
+
+        //adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_2, listageneral);
         //adapter = new ArrayAdapter<datos>(this, android.R.layout.simple_list_item_1, values);
         listView.setAdapter(adapter);
 
