@@ -340,7 +340,7 @@ public class Play extends AppCompatActivity{
     public void terminarJuego(){
         new AlertDialog.Builder(this)
                 .setTitle("Fin del juego")
-                .setMessage("Esta es tu puntuacion:" + "\n" + "Dinero ganado y puntuación: " + dineroGanado + "\n" + "preguntas correctas: " + (pregActual) )
+                .setMessage("Esta es tu puntuacion:" + "\n" + "Dinero ganado: " + dineroGanado + "\n" + "Preguntas correctas: " + (pregActual) + "\n" +  "Puntuación: " + arrayMoney.get(pregActual))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
