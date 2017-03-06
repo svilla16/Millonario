@@ -45,10 +45,6 @@ public class Settings extends AppCompatActivity {
         textos=(EditText)findViewById(R.id.texto);
         //Número de Ayudas
         numero=(Spinner)findViewById(R.id.ayudas);
-
-
-
-
     }
     protected void onPause()  {
         //Guarda los datos en el XML
