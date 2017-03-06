@@ -378,7 +378,7 @@ public class Play extends AppCompatActivity{
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("puntuacion", arrayMoney.get(pregActual+1));
-        editor.apply();
+        editor.apply();//
         super.onPause();
     }
 
