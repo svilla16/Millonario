@@ -373,7 +373,7 @@ public class Play extends AppCompatActivity{
         return true;
     }
 
-    protected void onPause()  {
+    protected void onPause()  { ///
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
