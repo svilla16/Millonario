@@ -3,6 +3,7 @@ package sdm.labs.sevilpon.millonario;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
+import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -77,6 +78,8 @@ public class Play extends AppCompatActivity{
         boton3 = (Button) findViewById(R.id.button3);
         boton4 = (Button) findViewById(R.id.button4);
         pregunta = (TextView) findViewById(R.id.lv_QuestionGame);
+
+        ColorFilter colorInicial;
 
         dineroActual = (TextView) findViewById(R.id.lv_money);
         numPregActual = (TextView) findViewById(R.id.lv_questionNumber);
@@ -247,6 +250,15 @@ public class Play extends AppCompatActivity{
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
+                    b_respuesta.getBackground().clearColorFilter();
+                    boton1.setEnabled(true);
+                    boton2.setEnabled(true);
+                    boton3.setEnabled(true);
+                    boton4.setEnabled(true);
+                    boton1.getBackground().clearColorFilter();
+                    boton2.getBackground().clearColorFilter();
+                    boton3.getBackground().clearColorFilter();
+                    boton4.getBackground().clearColorFilter();
                     siguientePregunta();
                 }else{
                     /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
@@ -262,6 +274,15 @@ public class Play extends AppCompatActivity{
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
+                    b_respuesta.getBackground().clearColorFilter();
+                    boton1.setEnabled(true);
+                    boton2.setEnabled(true);
+                    boton3.setEnabled(true);
+                    boton4.setEnabled(true);
+                    boton1.getBackground().clearColorFilter();
+                    boton2.getBackground().clearColorFilter();
+                    boton3.getBackground().clearColorFilter();
+                    boton4.getBackground().clearColorFilter();
                     siguientePregunta();
                 }else{
                     /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
@@ -277,6 +298,15 @@ public class Play extends AppCompatActivity{
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
+                    b_respuesta.getBackground().clearColorFilter();
+                    boton1.setEnabled(true);
+                    boton2.setEnabled(true);
+                    boton3.setEnabled(true);
+                    boton4.setEnabled(true);
+                    boton1.getBackground().clearColorFilter();
+                    boton2.getBackground().clearColorFilter();
+                    boton3.getBackground().clearColorFilter();
+                    boton4.getBackground().clearColorFilter();
                     siguientePregunta();
                 }else{
                     /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
@@ -292,6 +322,15 @@ public class Play extends AppCompatActivity{
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
+                    b_respuesta.getBackground().clearColorFilter();
+                    boton1.setEnabled(true);
+                    boton2.setEnabled(true);
+                    boton3.setEnabled(true);
+                    boton4.setEnabled(true);
+                    boton1.getBackground().clearColorFilter();
+                    boton2.getBackground().clearColorFilter();
+                    boton3.getBackground().clearColorFilter();
+                    boton4.getBackground().clearColorFilter();
                     siguientePregunta();
                 }else{
                     /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
@@ -301,7 +340,6 @@ public class Play extends AppCompatActivity{
 
                 break;
         }
-        b_respuesta.setBackgroundResource(android.R.drawable.btn_default);
 
         /*String right = arrayQuestions.get(pregActual).getRight();
         Button b_respuesta = (Button) v;
@@ -344,9 +382,7 @@ public class Play extends AppCompatActivity{
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        //TODO: Guardar datos en db
-                        resetearValores();
-                        finishActivity(0);
+                        finish();
                     }
                 })
                 /*.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -374,8 +410,23 @@ public class Play extends AppCompatActivity{
 
     public boolean onOptionsItemSelected(MenuItem item) //Los iconos del menu que acciones hacen
     {
-        if(item.getItemId() == android.R.id.home)
-        {return super.onOptionsItemSelected(item);}
+        if(item.getItemId() == android.R.id.home)return super.onOptionsItemSelected(item);
+
+        if(item.getItemId() == R.id.ic_phone){
+            comodinLlamada();
+            item.setEnabled(false);
+        }
+
+        if(item.getItemId() == R.id.ic_fifty){
+            comodinFifty();
+            item.setEnabled(false);
+        }
+
+        if(item.getItemId() == R.id.ic_people){
+            comodinPeople();
+            item.setEnabled(false);
+        }
+
 
         return true;
     }
@@ -384,10 +435,87 @@ public class Play extends AppCompatActivity{
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("puntuacion", arrayMoney.get(pregActual+1));
-        editor.apply();//
+        editor.putInt("puntuacion", arrayMoney.get(pregActual));
+        editor.commit();//
+
         super.onPause();
     }
+
+    public boolean comodinLlamada(){
+        String llamada = arrayQuestions.get(pregActual).phone;
+        switch(llamada){
+            case "1":
+                boton1.getBackground().setColorFilter(0x000000FF, PorterDuff.Mode.MULTIPLY);
+                break;
+            case "2":
+                boton2.getBackground().setColorFilter(0x000000FF, PorterDuff.Mode.MULTIPLY);
+                break;
+            case "3":
+                boton3.getBackground().setColorFilter(0x000000FF, PorterDuff.Mode.MULTIPLY);
+                break;
+            case "4":
+                boton4.getBackground().setColorFilter(0x000000FF, PorterDuff.Mode.MULTIPLY);
+                break;
+        }
+        return true;
+    }
+
+    public boolean comodinFifty(){
+        String fifty1 = arrayQuestions.get(pregActual).fifty1;
+        String fifty2 = arrayQuestions.get(pregActual).fifty2;
+        switch(fifty1){
+            case "1":
+                boton1.setEnabled(false);
+                break;
+            case "2":
+                boton2.setEnabled(false);
+                break;
+            case "3":
+                boton3.setEnabled(false);
+                break;
+            case "4":
+                boton4.setEnabled(false);
+                break;
+        }
+
+        switch(fifty2){
+            case "1":
+                boton1.setEnabled(false);
+                break;
+            case "2":
+                boton2.setEnabled(false);
+                break;
+            case "3":
+                boton3.setEnabled(false);
+                break;
+            case "4":
+                boton4.setEnabled(false);
+                break;
+        }
+        return true;
+    }
+
+    public boolean comodinPeople(){
+        String audience = arrayQuestions.get(pregActual).audience;
+        switch(audience){
+            case "1":
+                boton1.getBackground().setColorFilter(0xFFFFFF00, PorterDuff.Mode.MULTIPLY);
+                break;
+            case "2":
+                boton2.getBackground().setColorFilter(0xFFFFFF00, PorterDuff.Mode.MULTIPLY);
+                break;
+            case "3":
+                boton3.getBackground().setColorFilter(0xFFFFFF00, PorterDuff.Mode.MULTIPLY);
+                break;
+            case "4":
+                boton4.getBackground().setColorFilter(0xFFFFFF00, PorterDuff.Mode.MULTIPLY);
+                break;
+        }
+        return true;
+    }
+
+
+
 
 
 

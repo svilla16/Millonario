@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Millonario</string>
+    <string name="error_questions_charge">Question game\'s haven\'t been charged</string>
+    <string name="l_answerCorrect">Correct answer! Let\'s continue</string>
+    <string name="l_answerInCorrect">Incorrect answer! Well, that\'s all for today friend</string>
+    <string name="l_playing"><b>Playing for:</b></string>
+    <string name="l_question"><b>Question:</b></string>
+    <string name="lv_money"></string>
+</resources>

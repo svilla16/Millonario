@@ -1,21 +1,5 @@
 <resources>
     <string name="app_name">Millonario</string>
-    <string-array name="localn">
-        <item>Adrian</item>
-        <item>Juan Carlos</item>
-        <item>Ismael</item>
-        <item>Sebastian</item>
-        <item>Andrea</item>
-        <item>Noelia</item>
-    </string-array>
-    <string-array name="localp">
-        <item>5000</item>
-        <item>400</item>
-        <item>1500</item>
-        <item>200000</item>
-        <item>250000</item>
-        <item>1000000</item>
-    </string-array>
     <string-array name="ayuda">
         <item>0</item>
         <item>1</item>
@@ -24,16 +8,16 @@
     </string-array>
 
     <string name="l_playing"><b>Jugando por:</b></string>
-    <string name="lv_money"><b>0$</b></string>
+    <string name="lv_money" translatable="false"><b>0$</b></string>
     <string name="l_question"><b>Pregunta:</b></string>
-    <string name="lv_questionNumber"><b>1</b></string>
+    <string name="lv_questionNumber" translatable="false"><b>1</b></string>
 
-    <string name="lv_question"><b>¿?</b></string>
+    <string name="lv_question" translatable="false"><b>¿?</b></string>
 
-    <string name="lv_resp1"><b>1</b></string>
-    <string name="lv_resp2"><b>2</b></string>
-    <string name="lv_resp3"><b>3</b></string>
-    <string name="lv_resp4"><b>4</b></string>
+    <string name="lv_resp1" translatable="false"><b>1</b></string>
+    <string name="lv_resp2" translatable="false"><b>2</b></string>
+    <string name="lv_resp3" translatable="false"><b>3</b></string>
+    <string name="lv_resp4" translatable="false"><b>4</b></string>
     <string name="error_questions_charge">No se han podido cargar las preguntas del juego</string>
 
     <string name="l_answerCorrect">Respuesta correcta! Continuamos jugando</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <item
         android:id="@+id/ic_phone"
         android:icon="@android:drawable/ic_menu_call"
@@ -9,14 +10,20 @@
         android:label="Llamada"/>
     <item
         android:id="@+id/ic_fifty"
-        android:icon="@android:drawable/ic_menu_share"
+        android:icon="@drawable/i50"
         android:title="Comodín 50%"
         app:showAsAction="always"
         android:label="50%"/>
     <item
         android:id="@+id/ic_people"
-        android:icon="@android:drawable/alert_dark_frame"
+        android:icon="@mipmap/i_audience"
         android:title="Comodín público"
         app:showAsAction="always"
         android:label="Público"/>
+    <item
+        android:id="@+id/ic_stop"
+        android:icon="@drawable/stop"
+        android:title="Plantarse"
+        app:showAsAction="always"
+        android:label="Plantarse"/>
 </menu>
