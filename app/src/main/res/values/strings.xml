@@ -27,5 +27,8 @@
     <string name="Play">Play</string>
     <string name="Score">Scores</string>
     <string name="Setting">Settings</string>
-
+    <string name="nombre">Nombre:</string>
+    <string name="ayuda">¿Cuántas veces puedes pedir ayuda?</string>
+    <string name="añadir">Añadir Amigos</string>
+    <string name="nombres">Pon el nombre de tus amigos</string>
 </resources>
