@@ -3,7 +3,7 @@ package sdm.labs.sevilpon.millonario;
 public class datos {
 
         String nombre;
-        int puntuacion;///
+        int puntuacion;
 
 
         public String getnombres() {
