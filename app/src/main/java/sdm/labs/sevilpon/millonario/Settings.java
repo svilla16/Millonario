@@ -19,12 +19,9 @@ import static sdm.labs.sevilpon.millonario.R.id.tab1;
 
 //Si cambias el AppCompatPreferenceActivity por AppCompatActivity funciona el activity_settings
 public class Settings extends AppCompatActivity {
-    private EditText names;
-    private EditText textos;
-    public int num;
-    public String namess;
-    public String amigos;
-    public int punt;
+    private EditText names, textos;
+    public int num , punt;
+    public String namess, comprobar, amigos;
     private TextView guardado;
     Spinner numero;
     private BaaedDates sqllite;
@@ -50,12 +47,14 @@ public class Settings extends AppCompatActivity {
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        num= numero.getSelectedItemPosition();
-        editor.putString("nombre" , names.getText().toString());
-        editor.putString("amigo" , textos.getText().toString());
-        editor.putInt("ayuda", num);
-        editor.putInt("puntuacion", 1000);
-        editor.apply();
+        comprobar = names.getText().toString();
+        if(comprobar != " ")
+        {
+            num = numero.getSelectedItemPosition();
+            editor.putString("nombre", names.getText().toString());
+            editor.putString("amigo", textos.getText().toString());
+            editor.putInt("ayuda", num);
+        editor.apply();}
         super.onPause();
     }
 
@@ -66,7 +65,6 @@ public class Settings extends AppCompatActivity {
         textos.setText(prefs.getString("amigo" , ""));
         num=prefs.getInt("ayuda",0);
         numero.setSelection(num);
-        amigos = prefs.getString("amigo", "");
         namess = prefs.getString("nombre", "");
         punt = prefs.getInt("puntuacion",0);
         Load(namess,punt);

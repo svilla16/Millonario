@@ -1,9 +1,11 @@
 package sdm.labs.sevilpon.millonario;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -368,9 +370,16 @@ public class Play extends AppCompatActivity{
         if(item.getItemId() == android.R.id.home)
         {return super.onOptionsItemSelected(item);}
 
-
-
         return true;
+    }
+
+    protected void onPause()  {
+        //Guarda los datos en el XML
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("puntuacion", arrayMoney.get(pregActual+1));
+        editor.apply();
+        super.onPause();
     }
 
 
