@@ -1,8 +1,10 @@
 package sdm.labs.sevilpon.millonario;
 
+import android.content.DialogInterface;
 import android.content.res.XmlResourceParser;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Play extends AppCompatActivity implements View.OnClickListener{
+public class Play extends AppCompatActivity{
     //Array global que contendra todas las preguntas y sus datos
     ArrayList<Question> arrayQuestions = new ArrayList<>(15);
     ArrayList<Integer> arrayMoney = new ArrayList<>(15);
@@ -37,6 +39,8 @@ public class Play extends AppCompatActivity implements View.OnClickListener{
 
     //Pregunta actual (Variable interna para llevar control del objeto Question a usar)
     int pregActual = 0;
+
+    int dineroGanado = 0;
 
     // Constants XML Tags
     //Etiqueta TAG
@@ -55,17 +59,6 @@ public class Play extends AppCompatActivity implements View.OnClickListener{
     private static final String FIFTY1 = "fifty1";
     private static final String FIFTY2 = "fifty2";
 
-    /*String number = null;
-    String text = null;
-    String answer1 = null;
-    String answer2 = null;
-    String answer3 = null;
-    String answer4 = null;
-    String right = null;
-    String audience = null;
-    String phone = null;
-    String fifty1 = null;
-    String fifty2= null;*/
 
 
     @Override
@@ -244,43 +237,62 @@ public class Play extends AppCompatActivity implements View.OnClickListener{
             case (R.id.button1):
                 if(right.equals("1")){
                     b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
-                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
+                    pregActual++;
+                    //TODO: Tiempo de espera para que se vean los cambios en la pantalla
+
+                    siguientePregunta();
                 }else{
                     b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
+                    terminarJuego();
                 }
+
                 break;
             case (R.id.button2):
                 if(right.equals("2")){
                     b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
                     Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
                     pregActual++;
-                    b_respuesta.setBackgroundResource(android.R.drawable.btn_default);
+                    //TODO: Tiempo de espera para que se vean los cambios en la pantalla
+
                     siguientePregunta();
                 }else{
                     b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
                 }
+
                 break;
             case (R.id.button3):
                 if(right.equals("3")){
                     b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
-                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
+                    pregActual++;
+                    //TODO: Tiempo de espera para que se vean los cambios en la pantalla
+
+                    siguientePregunta();
                 }else{
                     b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
                 }
+
                 break;
             case (R.id.button4):
                 if(right.equals("4")){
                     b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
-                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
+                    pregActual++;
+                    //TODO: Tiempo de espera para que se vean los cambios en la pantalla
+
+                    siguientePregunta();
                 }else{
                     b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
                 }
+
                 break;
         }
+        b_respuesta.setBackgroundResource(android.R.drawable.btn_default);
 
         /*String right = arrayQuestions.get(pregActual).getRight();
         Button b_respuesta = (Button) v;
@@ -311,14 +323,39 @@ public class Play extends AppCompatActivity implements View.OnClickListener{
         boton3.setText(arrayQuestions.get(pregActual).getAnswer3());
         boton4.setText(arrayQuestions.get(pregActual).getAnswer4());
 
-       /* dineroActual.setText(arrayMoney.get(pregActual));*/
-       /* numPregActual.setText(pregActual);*/
+        if(pregActual<14)dineroActual.setText(String.valueOf(arrayMoney.get(pregActual+1)));
+        if(pregActual<14)numPregActual.setText(String.valueOf(pregActual+1));
+        if(pregActual == 5 ||pregActual == 10) dineroGanado = arrayMoney.get(pregActual-1);
     }
 
-    @Override
-    public void onClick(View v){
+    public void terminarJuego(){
+        new AlertDialog.Builder(getApplicationContext())
+                .setTitle("Fin del juego")
+                .setMessage("Esta es tu puntuacion:" + "<br/>" + "Dinero ganado y puntuación: " + dineroGanado + "<br/>" + "preguntas correctas: " + (pregActual-1) )
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //TODO: Guardar datos en db
+                        resetearValores();
+                        finishActivity(0);
+                    }
+                })
+                /*.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })*/
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    public void resetearValores(){
+        pregActual = 0;
+        dineroGanado = 0;
 
     }
+
+
 
 
 
