@@ -65,7 +65,9 @@ public class Play extends AppCompatActivity{
     private static final String FIFTY1 = "fifty1";
     private static final String FIFTY2 = "fifty2";
 
-
+    public int punt;
+    public String namess;
+    private BaaedDates sqllite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -145,6 +147,9 @@ public class Play extends AppCompatActivity{
             });
 
         }
+
+
+
 
     }
 
@@ -431,14 +436,31 @@ public class Play extends AppCompatActivity{
         return true;
     }
 
-    protected void onPause()  { ///
+    protected void onStart()  {
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("puntuacion", arrayMoney.get(pregActual));
-        editor.commit();//
+        namess = prefs.getString("nombre", "");
+        if(namess == "") Toast.makeText(Play.this, R.string.l_name, Toast.LENGTH_SHORT).show();
+        super.onStart();
+    }
 
+    protected void onPause(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        punt = prefs.getInt("puntuacion",0);
+        if(namess == "") Toast.makeText(Play.this, R.string.l_name, Toast.LENGTH_SHORT).show();
+        if(namess != "")
+        {Load(namess,punt);}
+        editor.putInt("puntuacion", arrayMoney.get(pregActual));
+        editor.commit();
         super.onPause();
+    }
+
+    public void Load(String namess, int punt)
+    {
+        sqllite = new BaaedDates(getApplicationContext());
+        sqllite.addpuntuaciones(namess,punt);
     }
 
     public boolean comodinLlamada(){

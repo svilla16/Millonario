@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static sdm.labs.sevilpon.millonario.R.id.ayudas;
 import static sdm.labs.sevilpon.millonario.R.id.tab1;
@@ -21,7 +22,7 @@ import static sdm.labs.sevilpon.millonario.R.id.tab1;
 public class Settings extends AppCompatActivity {
     private EditText names, textos;
     public int num , punt;
-    public String namess, comprobar, amigos;
+    public String namess, amigos;
     private TextView guardado;
     Spinner numero;
     private BaaedDates sqllite;
@@ -47,14 +48,11 @@ public class Settings extends AppCompatActivity {
         //Guarda los datos en el XML
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        comprobar = names.getText().toString();
-        if(comprobar != " ")
-        {
-            num = numero.getSelectedItemPosition();
-            editor.putString("nombre", names.getText().toString());
-            editor.putString("amigo", textos.getText().toString());
-            editor.putInt("ayuda", num);
-        editor.apply();}
+        num = numero.getSelectedItemPosition();
+        editor.putString("nombre", names.getText().toString());
+        editor.putString("amigo", textos.getText().toString());
+        editor.putInt("ayuda", num);
+        editor.apply();
         super.onPause();
     }
 
@@ -65,17 +63,6 @@ public class Settings extends AppCompatActivity {
         textos.setText(prefs.getString("amigo" , ""));
         num=prefs.getInt("ayuda",0);
         numero.setSelection(num);
-        namess = prefs.getString("nombre", "");
-        punt = prefs.getInt("puntuacion",0);
-        Load(namess,punt);
         super.onResume();
-    }
-
-    public void Load(String namess, int punt)
-    {   guardado = (TextView) findViewById(R.id.prueba);
-        guardado.setText("Jugador:"+namess+"\n"+"Nº de Ayudas:"+num+"\n"+"Puntuacion:"+punt+"\n"
-        +"Amigo:"+amigos+"\n");
-        sqllite = new BaaedDates(getApplicationContext());
-        sqllite.addpuntuaciones(namess,punt);
     }
 }

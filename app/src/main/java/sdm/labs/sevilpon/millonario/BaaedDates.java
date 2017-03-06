@@ -12,6 +12,8 @@ import android.util.Log;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -57,10 +59,7 @@ public class BaaedDates extends SQLiteOpenHelper {
         }
         cursor.close();
         database.close();
-        for(int i =0; i< resultado.size(); i++)
-        {
-             listas = resultado.get(i);
-        }
+
         return resultado;
     }
 

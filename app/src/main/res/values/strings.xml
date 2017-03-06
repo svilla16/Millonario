@@ -6,20 +6,26 @@
         <item>2</item>
         <item>3</item>
     </string-array>
-
     <string name="l_playing"><b>Jugando por:</b></string>
     <string name="lv_money" translatable="false"><b>0$</b></string>
     <string name="l_question"><b>Pregunta:</b></string>
     <string name="lv_questionNumber" translatable="false"><b>1</b></string>
-
     <string name="lv_question" translatable="false"><b>¿?</b></string>
-
     <string name="lv_resp1" translatable="false"><b>1</b></string>
     <string name="lv_resp2" translatable="false"><b>2</b></string>
     <string name="lv_resp3" translatable="false"><b>3</b></string>
     <string name="lv_resp4" translatable="false"><b>4</b></string>
     <string name="error_questions_charge">No se han podido cargar las preguntas del juego</string>
-
     <string name="l_answerCorrect">Respuesta correcta! Continuamos jugando</string>
+    <string name="l_name">Escribe tu Nombre en Settings, Por Favor</string>
     <string name="l_answerInCorrect">Respuesta Incorrecta! Bueno, concursante esto parece todo por hoy</string>
+    <string name="pregunta">¿Quieres ser Millonario?</string>
+    <string name="autores">Autores:</string>
+    <string name="p_se">Sebastian Villa Ponce</string>
+    <string name="p_in">Inés Gómez Benavent</string>
+    <string name="copy">SDM 2017</string>
+    <string name="Play">Play</string>
+    <string name="Score">Scores</string>
+    <string name="Setting">Settings</string>
+
 </resources>

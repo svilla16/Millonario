@@ -19,7 +19,10 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.ToIntFunction;
 
 public class Scores extends AppCompatActivity {
     TabHost tabHost;
@@ -28,7 +31,7 @@ public class Scores extends AppCompatActivity {
     ArrayAdapter adapter;
     ListView listView;
     LinearLayout linearLayout;
-    ArrayList<datos> listageneral;
+    List<datos> listageneral;
     private BaaedDates sqllite;
     Context context;
 
@@ -55,7 +58,7 @@ public class Scores extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.localn);
         listageneral  = new ArrayList<datos>();
         listageneral.addAll(BaaedDates.getInstance(this).lista());
-         adapter =new ArrayAdapter (this, android.R.layout.simple_list_item_2, android.R.id.text1, listageneral)
+        adapter =new ArrayAdapter (this, android.R.layout.simple_list_item_2, android.R.id.text1, listageneral)
         {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);

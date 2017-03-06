@@ -69,12 +69,13 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="@string/lv_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/lv_QuestionGame"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:fontFamily="sans-serif"
-                android:textSize="30sp"
+                android:text="@string/lv_question"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -82,50 +83,49 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_span="4">
+                android:fillViewport="true"
+                android:orientation="vertical">
 
-                <Button
-                    android:text="@string/lv_resp1"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button1" />
+                    android:layout_height="match_parent"
+                    android:layout_span="4"
+                    android:fillViewport="true"
+                    android:orientation="vertical">
 
-                <Button
-                    android:text="@string/lv_resp2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button2" />
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lv_resp1"
+                        android:textAlignment="center" />
 
-                <Button
-                    android:text="@string/lv_resp3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button3" />
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lv_resp2"
+                        android:textAlignment="center" />
 
-                <Button
-                    android:text="@string/lv_resp4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button4" />
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lv_resp3"
+                        android:textAlignment="center" />
 
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/prueba2" />
-
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lv_resp4"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </ScrollView>
         </TableRow>
     </TableLayout>
 </LinearLayout>
