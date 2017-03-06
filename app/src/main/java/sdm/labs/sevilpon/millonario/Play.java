@@ -239,14 +239,15 @@ public class Play extends AppCompatActivity{
         switch (v.getId()){
             case (R.id.button1):
                 if(right.equals("1")){
-                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+
+                    /*b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
                     siguientePregunta();
                 }else{
-                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
                     terminarJuego();
                 }
@@ -254,43 +255,46 @@ public class Play extends AppCompatActivity{
                 break;
             case (R.id.button2):
                 if(right.equals("2")){
-                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                    /*b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
                     siguientePregunta();
                 }else{
-                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
+                    terminarJuego();
                 }
 
                 break;
             case (R.id.button3):
                 if(right.equals("3")){
-                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                    /*b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
                     siguientePregunta();
                 }else{
-                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
+                    terminarJuego();
                 }
 
                 break;
             case (R.id.button4):
                 if(right.equals("4")){
-                    b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                    /*b_respuesta.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerCorrect, Toast.LENGTH_SHORT).show();
                     pregActual++;
                     //TODO: Tiempo de espera para que se vean los cambios en la pantalla
 
                     siguientePregunta();
                 }else{
-                    b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                    /*b_respuesta.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);*/
                     Toast.makeText(Play.this, R.string.l_answerInCorrect, Toast.LENGTH_SHORT).show();
+                    terminarJuego();
                 }
 
                 break;
@@ -332,9 +336,9 @@ public class Play extends AppCompatActivity{
     }
 
     public void terminarJuego(){
-        new AlertDialog.Builder(getApplicationContext())
+        new AlertDialog.Builder(this)
                 .setTitle("Fin del juego")
-                .setMessage("Esta es tu puntuacion:" + "<br/>" + "Dinero ganado y puntuación: " + dineroGanado + "<br/>" + "preguntas correctas: " + (pregActual-1) )
+                .setMessage("Esta es tu puntuacion:" + "\n" + "Dinero ganado y puntuación: " + dineroGanado + "\n" + "preguntas correctas: " + (pregActual) )
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -349,6 +353,7 @@ public class Play extends AppCompatActivity{
                     }
                 })*/
                 .setIcon(android.R.drawable.ic_dialog_alert)
+                .create()
                 .show();
     }
 
@@ -363,6 +368,8 @@ public class Play extends AppCompatActivity{
         getMenuInflater().inflate(R.menu.menuplay, menu);
         return true;
     }
+
+
     public boolean onOptionsItemSelected(MenuItem item) //Los iconos del menu que acciones hacen
     {
         if(item.getItemId() == android.R.id.home)
