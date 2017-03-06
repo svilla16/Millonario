@@ -27,7 +27,7 @@ public class Scores extends AppCompatActivity {
     ArrayAdapter adapter;
     ListView listView;
     LinearLayout linearLayout;
-    List<datos> listageneral;
+    ArrayList<datos> listageneral;
     private BaaedDates sqllite;
     Context context;
 
@@ -52,12 +52,12 @@ public class Scores extends AppCompatActivity {
         host.addTab(spec);
         //nombres local
         listView = (ListView) findViewById(R.id.localn);
-        listageneral  = new ArrayList<>();
+        listageneral  = new ArrayList<datos>();
         listageneral.addAll(BaaedDates.getInstance(this).lista());
         //local = getResources().getStringArray(R.array.localn);
         //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, local);
         //local = getResources().getStringArray(values);
-        adapter = new ArrayAdapter<datos>(this,android.R.layout.simple_expandable_list_item_1, listageneral);
+        adapter = new ArrayAdapter<>(this,android.R.layout.simple_expandable_list_item_1, listageneral);
         //adapter = new ArrayAdapter<datos>(this, android.R.layout.simple_list_item_1, values);
         listView.setAdapter(adapter);
 
