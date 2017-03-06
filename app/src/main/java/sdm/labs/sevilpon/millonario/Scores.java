@@ -1,5 +1,6 @@
 package sdm.labs.sevilpon.millonario;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -15,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Scores extends AppCompatActivity {
@@ -26,6 +27,9 @@ public class Scores extends AppCompatActivity {
     ArrayAdapter adapter;
     ListView listView;
     LinearLayout linearLayout;
+    List<datos> listageneral;
+    private BaaedDates sqllite;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,7 @@ public class Scores extends AppCompatActivity {
 
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
-
+        context = this;
         //Tab 1 - Local
         TabHost.TabSpec spec = host.newTabSpec("Local");
         spec.setContent(R.id.tab1);
@@ -48,14 +52,14 @@ public class Scores extends AppCompatActivity {
         host.addTab(spec);
         //nombres local
         listView = (ListView) findViewById(R.id.localn);
-        local = getResources().getStringArray(R.array.localn);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, local);
+        listageneral  = new ArrayList<>();
+        listageneral.addAll(BaaedDates.getInstance(this).lista());
+        //local = getResources().getStringArray(R.array.localn);
+        //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, local);
+        //local = getResources().getStringArray(values);
+        adapter = new ArrayAdapter<datos>(this,android.R.layout.simple_expandable_list_item_1, listageneral);
+        //adapter = new ArrayAdapter<datos>(this, android.R.layout.simple_list_item_1, values);
         listView.setAdapter(adapter);
-        //puntuaciones local
-        ListView listViews = (ListView) findViewById(R.id.localp);
-        locals = getResources().getStringArray(R.array.localp);
-        ArrayAdapter<String> adapters = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, locals);
-        listViews.setAdapter(adapters);
 
 
     }
@@ -69,11 +73,15 @@ public class Scores extends AppCompatActivity {
         if(item.getItemId() == android.R.id.home)
         {return super.onOptionsItemSelected(item);}
         linearLayout=(LinearLayout) findViewById(R.id.tab1);
+        //Borrar los datos de la base de datos
+        sqllite = new BaaedDates(getApplicationContext());
+        sqllite.clearAllpuntuaciones();
         linearLayout.removeAllViews();
+
 
         return true;
     }
 
 
-    
+
 }

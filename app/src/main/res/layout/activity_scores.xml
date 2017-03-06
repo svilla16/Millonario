@@ -30,7 +30,7 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="445dp">
 
 
 
@@ -43,18 +43,14 @@
                     <ListView
                         android:id="@+id/localn"
                         style="@style/Widget.AppCompat.ListView"
-                        android:layout_width="178dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:cacheColorHint="@android:color/background_light"
                         android:visibility="visible"
                         android:headerDividersEnabled="true"
-                        />
+                        android:scrollbars="vertical"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"/>
 
-                    <ListView
-                        android:id="@+id/localp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        />
                 </LinearLayout>
 
 

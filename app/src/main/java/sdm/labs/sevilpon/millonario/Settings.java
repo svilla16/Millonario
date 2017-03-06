@@ -21,8 +21,11 @@ import static sdm.labs.sevilpon.millonario.R.id.tab1;
 public class Settings extends AppCompatActivity {
     private EditText names;
     private EditText textos;
-    private  String num;
+    public String num, namess;
+    public int punt;
+    private TextView guardado;
     Spinner numero;
+    private BaaedDates sqllite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class Settings extends AppCompatActivity {
         editor.putString("nombre" , names.getText().toString());
         editor.putString("amigo" , textos.getText().toString());
         editor.putString("ayuda", num);
+        editor.putInt("puntuacion", 1000);
         editor.apply();
         super.onPause();
     }
@@ -63,9 +67,17 @@ public class Settings extends AppCompatActivity {
         names.setText(prefs.getString("nombre" , ""));
         textos.setText(prefs.getString("amigo" , ""));
         num=prefs.getString("ayuda", "");
-        TextView guardado = (TextView) findViewById(R.id.prueba);
-        guardado.setText("Nº de Ayudas:"+num+"\n");
-
+        //namess = prefs.getString("nombre", "");
+        namess = prefs.getString("nombre", "");
+        punt = prefs.getInt("puntuacion",0);
+        Load(namess,punt);
         super.onResume();
+    }
+
+    public void Load(String namess, int punt)
+    {   guardado = (TextView) findViewById(R.id.prueba);
+        guardado.setText("Nº de Ayudas:"+namess+"\n"+"Puntuacion:"+punt+"\n");
+        sqllite = new BaaedDates(getApplicationContext());
+        sqllite.addpuntuaciones(namess,punt);
     }
 }
